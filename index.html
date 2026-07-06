@@ -1,82 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; color: rgba(255, 255, 255, 0.85); -webkit-text-stroke: rgba(255, 255, 255, 0.85)}
-    span.s1 {font-kerning: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>生日礼物选择</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
+body{background:#f7f8fa;padding:20px 16px;}
+.page-title{text-align:center;font-size:24px;color:#222;margin-bottom:24px;font-weight:600;}
+.gift-card{background:#fff;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.gift-name{font-size:17px;font-weight:600;color:#111;margin-bottom:8px;}
+.gift-source{font-size:13px;color:#888;margin-bottom:14px;word-break:break-all;}
+.btn-group{display:flex;gap:10px;}
+button{flex:1;padding:11px 0;border-radius:10px;border:none;font-size:15px;cursor:pointer;}
+.btn-open{background:#e64340;color:#fff;}
+.btn-copy{background:#f0f2f5;color:#333;}
+.divider{height:1px;background:#eee;margin:28px 0;}
+.custom-box{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.custom-title{font-size:17px;font-weight:600;margin-bottom:12px;}
+#customUrl{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:14px;margin-bottom:14px;outline:0;}
+.tip-text{font-size:12px;color:#999;margin-top:8px;line-height:1.5;}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;display:none;z-index:999;}
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;title&gt;生日礼物选择&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">&lt;style&gt;</span></p>
-<p class="p1"><span class="s1">*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}</span></p>
-<p class="p1"><span class="s1">body{background:#f7f8fa;padding:20px 16px;}</span></p>
-<p class="p1"><span class="s1">.page-title{text-align:center;font-size:24px;color:#222;margin-bottom:24px;font-weight:600;}</span></p>
-<p class="p1"><span class="s1">.gift-card{background:#fff;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}</span></p>
-<p class="p1"><span class="s1">.gift-name{font-size:17px;font-weight:600;color:#111;margin-bottom:8px;}</span></p>
-<p class="p1"><span class="s1">.gift-source{font-size:13px;color:#888;margin-bottom:14px;word-break:break-all;}</span></p>
-<p class="p1"><span class="s1">.btn-group{display:flex;gap:10px;}</span></p>
-<p class="p1"><span class="s1">button{flex:1;padding:11px 0;border-radius:10px;border:none;font-size:15px;}</span></p>
-<p class="p1"><span class="s1">.btn-open{background:#e64340;color:white;}</span></p>
-<p class="p1"><span class="s1">.btn-copy{background:#f0f2f5;color:#333;}</span></p>
-<p class="p1"><span class="s1">.divider{height:1px;background:#eee;margin:28px 0;}</span></p>
-<p class="p1"><span class="s1">.custom-box{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}</span></p>
-<p class="p1"><span class="s1">.custom-title{font-size:17px;font-weight:600;margin-bottom:12px;}</span></p>
-<p class="p1"><span class="s1">#customUrl{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;}</span></p>
-<p class="p1"><span class="s1">.tip-text{font-size:12px;color:#999;margin-top:8px;line-height:1.5;}</span></p>
-<p class="p1"><span class="s1">.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;display:none;z-index:999;}</span></p>
-<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;h1 class="page-title"&gt;🎁 生日礼物挑选&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-card"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-name"&gt;日版deck OLED掌机512G现货&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-source"&gt;京东链接：https://3.jd.hk/101v2-Na&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="btn-group"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-open" data-link="https://3.jd.hk/101v2-Na"&gt;直接打开链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-copy" data-link="https://3.jd.hk/101v2-Na"&gt;复制链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-card"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-name"&gt;三星27英寸FastIPS双模显示器&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="gift-source"&gt;京东链接：https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="btn-group"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-open" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331"&gt;直接打开链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-copy" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331"&gt;复制链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="divider"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="custom-box"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="custom-title"&gt;自定义其他礼物链接&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;input id="customUrl" placeholder="粘贴你的礼物商品链接"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="btn-group"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-open" id="customOpen"&gt;打开自定义链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;button class="btn-copy" id="customCopy"&gt;复制自定义链接&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;p class="tip-text"&gt;提示：微信内京东链接会拦截，复制右上角浏览器打开&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="toast" id="toast"&gt;链接已复制&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1">function copyText(text){return new Promise((resolve,reject)=&gt;{if(navigator.clipboard){navigator.clipboard.writeText(text).then(resolve).catch(reject);}else{const t=document.createElement('textarea');t.value=text;t.style.left='-9999px';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');document.body.removeChild(t);ok?resolve():reject();}})}</span></p>
-<p class="p1"><span class="s1">function showToast(msg){const t=document.getElementById('toast');t.innerText=msg;t.style.display='block';setTimeout(()=&gt;t.style.display='none',1500);}</span></p>
-<p class="p1"><span class="s1">function openLink(u){window.location.href=u;}</span></p>
-<p class="p1"><span class="s1">document.querySelectorAll('.btn-open').forEach(b=&gt;{b.onclick=()=&gt;{let l=b.dataset.link;if(l)openLink(l);}});</span></p>
-<p class="p1"><span class="s1">document.querySelectorAll('.btn-copy').forEach(b=&gt;{b.onclick=async()=&gt;{let l=b.dataset.link;if(!l)return;try{await copyText(l);showToast('复制成功，去浏览器打开');}catch(e){showToast('复制失败，手动长按复制');}}});</span></p>
-<p class="p1"><span class="s1">const ipt=document.getElementById('customUrl');</span></p>
-<p class="p1"><span class="s1">document.getElementById('customOpen').onclick=()=&gt;{let v=ipt.value.trim();if(!v)return showToast('请输入链接');openLink(v);};</span></p>
-<p class="p1"><span class="s1">document.getElementById('customCopy').onclick=async()=&gt;{let v=ipt.value.trim();if(!v)return showToast('请输入链接');await copyText(v);showToast('自定义链接复制成功');};</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<h1 class="page-title">🎁 生日礼物挑选</h1>
+<div class="gift-card">
+<div class="gift-name">日版deck OLED掌机512G现货</div>
+<div class="gift-source">京东链接：https://3.jd.hk/101v2-Na</div>
+<div class="btn-group">
+<button class="btn-open" data-link="https://3.jd.hk/101v2-Na">直接打开链接</button>
+<button class="btn-copy" data-link="https://3.jd.hk/101v2-Na">复制链接</button>
+</div>
+</div>
+<div class="gift-card">
+<div class="gift-name">三星27英寸FastIPS双模显示器</div>
+<div class="gift-source">京东链接：https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331</div>
+<div class="btn-group">
+<button class="btn-open" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331">直接打开链接</button>
+<button class="btn-copy" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331">复制链接</button>
+</div>
+</div>
+<div class="divider"></div>
+<div class="custom-box">
+<div class="custom-title">自定义其他礼物链接</div>
+<input id="customUrl" placeholder="粘贴你的礼物商品链接">
+<div class="btn-group">
+<button class="btn-open" id="customOpen">打开自定义链接</button>
+<button class="btn-copy" id="customCopy">复制自定义链接</button>
+</div>
+<p class="tip-text">提示：微信内京东链接会拦截，复制后用浏览器打开</p>
+</div>
+<div class="toast" id="toast">链接已复制</div>
+<script>
+function copyText(text){return new Promise((resolve,reject)=>{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(resolve).catch(reject);}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();t.setSelectionRange(0,text.length);const ok=document.execCommand('copy');document.body.removeChild(t);ok?resolve():reject();}})}
+function showToast(msg){const t=document.getElementById('toast');t.innerText=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1500);}
+function openLink(u){window.location.href=u;}
+document.querySelectorAll('.btn-open').forEach(b=>{b.onclick=()=>{let l=b.dataset.link;if(l)openLink(l);}});
+document.querySelectorAll('.btn-copy').forEach(b=>{b.onclick=async()=>{let l=b.dataset.link;if(!l)return;try{await copyText(l);showToast('复制成功，切换浏览器打开');}catch(e){showToast('复制失败，请长按链接手动复制');}}});
+const ipt=document.getElementById('customUrl');
+document.getElementById('customOpen').onclick=()=>{let v=ipt.value.trim();if(!v)return showToast('请输入商品链接');openLink(v);};
+document.getElementById('customCopy').onclick=async()=>{let v=ipt.value.trim();if(!v)return showToast('请输入商品链接');await copyText(v);showToast('自定义链接复制完成');};
+</script>
 </body>
 </html>
