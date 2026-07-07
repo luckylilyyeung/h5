@@ -6,15 +6,19 @@
 <title>Happy Birthday to Luffy · 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
-body{background:#1c1c28;padding:24px 18px;}
+/* 页面改为浅奶白色背景 */
+body{background:#fff8fc;padding:24px 18px;}
 .wrap{max-width:420px;margin:0 auto;}
 .head-title{text-align:center;margin-bottom:12px;}
-.head-title p{color:#a9a9c1;font-size:14px;line-height:1.6;margin-bottom:0;margin-top:16px;}
-.pick-tip{color:#c2c2e0;text-align:center;margin-bottom:20px;font-size:15px;margin-top:6px;}
-.gift-card{background:#2a2a3d;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,0.2);display:flex;align-items:flex-start;gap:14px;}
-.checkbox{width:22px;height:22px;margin-top:2px;accent-color:#e66b6b;cursor:pointer;}
+/* 浅色模式淡灰文字 */
+.head-title p{color:#554450;font-size:14px;line-height:1.6;margin-bottom:0;margin-top:16px;}
+.pick-tip{color:#775e76;text-align:center;margin-bottom:20px;font-size:15px;margin-top:6px;}
+/* 卡片浅粉底色 */
+.gift-card{background:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(220,160,200,0.15);display:flex;align-items:flex-start;gap:14px;}
+.checkbox{width:22px;height:22px;margin-top:2px;accent-color:#ff87b2;cursor:pointer;}
 .gift-info{flex:1;}
-.gift-name{font-size:17px;font-weight:600;color:#fff;margin-bottom:6px;}
+/* 深色文字适配白底 */
+.gift-name{font-size:17px;font-weight:600;color:#332230;margin-bottom:6px;}
 /* 隐藏链接文字，不再展示给用户 */
 .gift-source{display:none;}
 /* 次要复制按钮：同渐变色系，弱化透明度，保留统一画风，降低权重 */
@@ -25,34 +29,34 @@ body{background:#1c1c28;padding:24px 18px;}
     border:none;
     font-size:13px;
     cursor:pointer;
-    background: linear-gradient(135deg,rgba(255,121,168,0.45),rgba(180,123,255,0.45),rgba(123,166,255,0.45));
-    color:#e2e2f0;
+    background: linear-gradient(135deg,rgba(255,121,168,0.6),rgba(180,123,255,0.6),rgba(123,166,255,0.6));
+    color:#fff;
     transition:0.2s ease;
 }
 .btn-single:active{
     transform:scale(0.97);
 }
-.custom-box{background:#2a2a3d;border-radius:20px;padding:20px;}
-.custom-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;}
+.custom-box{background:#fff;border-radius:20px;padding:20px;}
+.custom-title{font-size:16px;font-weight:600;color:#332230;margin-bottom:10px;}
 .input-group{margin-bottom:12px;}
 #customUrl,.extra-input{
     width:100%;
     padding:12px 14px;
-    border:1px solid #444;
+    border:1px solid #e2d4e0;
     border-radius:10px;
     font-size:14px;
     margin-bottom:0;
     outline:0;
-    background:#1f1f2f;
-    color:#fff;
+    background:#fcf6fa;
+    color:#332230;
 }
 .add-more{
     width:100%;
     padding:9px;
     border-radius:999px;
-    border:1px dashed rgba(255,121,168,0.6);
+    border:1px dashed #ff87b2;
     background:transparent;
-    color:#ffc8dd;
+    color:#dd5588;
     font-size:13px;
     cursor:pointer;
     margin-top:8px;
@@ -78,8 +82,8 @@ body{background:#1c1c28;padding:24px 18px;}
     box-shadow: 0 2px 8px rgba(255,120,170,0.25);
 }
 .tip-text{display:none;}
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);color:#fff;padding:16px 26px;border-radius:10px;font-size:14px;display:none;z-index:999;min-width:260px;text-align:center;line-height:1.7;}
-.footer-note{margin-top:36px;text-align:center;color:#999;font-size:13px;line-height:1.7;}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:16px 26px;border-radius:10px;font-size:14px;display:none;z-index:999;min-width:260px;text-align:center;line-height:1.7;}
+.footer-note{margin-top:36px;text-align:center;color:#776070;font-size:13px;line-height:1.7;}
 </style>
 <body>
 <div class="wrap">
