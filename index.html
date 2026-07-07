@@ -104,6 +104,12 @@ body{background:#fff8fc;padding:24px 18px;}
     background:#fcf6fa;
     border-radius:12px;
 }
+/* 高亮提示文字样式 */
+.hint-text{
+    color:#ff579a;
+    font-weight:bold;
+    font-size:15px;
+}
 .modal-btn-group{
     display:flex;
     gap:10px;
@@ -275,9 +281,9 @@ document.getElementById('sendBtn').onclick=async()=>{
     return;
   }
 
-  // 拼接格式化许愿文本
+  // 拼接格式化许愿文本，末尾提示用span包裹高亮
   const time = new Date().toLocaleString();
-  currentFullText = `🎁 Luffy 2026生日礼物许愿单
+  const rawText = `🎁 Luffy 2026生日礼物许愿单
 提交时间：${time}
 
 【选中礼物】
@@ -286,10 +292,12 @@ ${giftList.join('\n\n')}
 【Luffy额外心愿】
 ${wishList.map(item => '· ' + item).join('\n')}
 
-可复制文本发送给老婆大人`;
-
-  // 弹窗展示生成内容
-  previewText.innerText = currentFullText;
+`;
+  const hintHtml = `<span class="hint-text">可复制文本发送给老婆大人</span>`;
+  // 复制用纯文本（不带标签）
+  currentFullText = rawText + '可复制文本发送给老婆大人';
+  // 弹窗渲染带样式HTML
+  previewText.innerHTML = rawText + hintHtml;
   previewModal.style.display = 'flex';
 };
 </script>
