@@ -9,7 +9,7 @@
 body{background:#fff8fc;padding:24px 18px;}
 .wrap{max-width:420px;margin:0 auto;}
 .head-title{text-align:center;margin-bottom:12px;}
-/* 统一和pick-tip样式完全一致 */
+/* 标题文字与pick-tip样式完全统一 */
 .head-title p{color:#775e76;font-size:15px;line-height:1.6;margin-bottom:0;margin-top:16px;}
 .pick-tip{color:#775e76;text-align:center;margin-bottom:20px;font-size:15px;margin-top:6px;}
 .gift-card{background:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(220,160,200,0.15);display:flex;align-items:flex-start;gap:14px;}
@@ -74,8 +74,8 @@ body{background:#fff8fc;padding:24px 18px;}
     border-radius:10px;font-size:14px;display:none;z-index:999;
     min-width:260px;text-align:center;line-height:1.7;
 }
-.footer-note{margin-top:36px;text-align:center;color:#776070;font-size:13px;line-height:1.7;}
-/* 弹窗展示生成的许愿文本 */
+.footer-note{display:none;}
+/* 弹窗样式 */
 .preview-modal{
     position:fixed;
     inset:0;
@@ -105,7 +105,15 @@ body{background:#fff8fc;padding:24px 18px;}
     background:#fcf6fa;
     border-radius:12px;
 }
-/* 高亮提示文字样式 */
+/* 弹窗顶部情话样式 */
+.modal-love-text{
+    text-align:center;
+    color:#996688;
+    font-size:14px;
+    margin-bottom:12px;
+    font-style:italic;
+}
+/* 底部高亮提示文字 */
 .hint-text{
     color:#ff579a;
     font-weight:bold;
@@ -136,7 +144,6 @@ body{background:#fff8fc;padding:24px 18px;}
 <div class="wrap">
 <div class="head-title">
   <img src="/h5/cake-title.png" alt="Happy Birthday to Luffy 2026" style="max-width:80%;width:auto;height:auto;object-fit:contain;">
-  <!-- 拆分为两行p标签，样式统一 -->
   <p>我最亲爱的老公宝宝，生日快乐！</p>
   <p>愿你岁岁舒心自在，永远保有自己的热爱～</p>
 </div>
@@ -171,9 +178,9 @@ body{background:#fff8fc;padding:24px 18px;}
 <button class="add-more" id="addBtn">＋ 添加更多心愿</button>
 </div>
 
-<!-- 修改按钮文字为生成许愿单 -->
 <button id="sendBtn">✧ 生成许愿单 ✧</button>
 
+<!-- 底部文字隐藏，移至弹窗内 -->
 <div class="footer-note">
 不用谢，老婆大人永远爱你( ˘ ³˘)
 </div>
@@ -183,6 +190,8 @@ body{background:#fff8fc;padding:24px 18px;}
 <!-- 许愿单预览弹窗 -->
 <div class="preview-modal" id="previewModal">
     <div class="preview-box">
+        <!-- 弹窗顶部情话 -->
+        <div class="modal-love-text">不用谢，老婆大人永远爱你( ˘ ³˘)</div>
         <div class="preview-content" id="previewText"></div>
         <div class="modal-btn-group">
             <button class="modal-btn copy-modal-btn" id="copyAllBtn">一键复制全部文字</button>
@@ -284,7 +293,7 @@ document.getElementById('sendBtn').onclick=async()=>{
     return;
   }
 
-  // 拼接格式化许愿文本，末尾提示用span包裹高亮
+  // 拼接格式化许愿文本
   const time = new Date().toLocaleString();
   const rawText = `🎁 Luffy 2026生日礼物许愿单
 提交时间：${time}
@@ -297,9 +306,9 @@ ${wishList.map(item => '· ' + item).join('\n')}
 
 `;
   const hintHtml = `<span class="hint-text">复制文本发送给老婆大人</span>`;
-  // 复制用纯文本（不带标签）
+  // 复制用纯文本（不含HTML标签、不含顶部情话）
   currentFullText = rawText + '复制文本发送给老婆大人';
-  // 弹窗渲染带样式HTML
+  // 弹窗渲染完整内容（顶部情话+清单+高亮提示）
   previewText.innerHTML = rawText + hintHtml;
   previewModal.style.display = 'flex';
 };
