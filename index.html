@@ -260,7 +260,7 @@ closeModalBtn.onclick = ()=>{
 // 弹窗一键复制全部许愿单
 copyAllBtn.onclick = async ()=>{
     await copyText(currentFullText);
-    showToast('许愿单完整文字已复制！可以截图保存成图片发给我✨');
+    showToast('许愿单完整文字已复制！可以发给我✨');
 }
 
 // 生成许愿单主逻辑
@@ -296,9 +296,9 @@ ${giftList.join('\n\n')}
 ${wishList.map(item => '· ' + item).join('\n')}
 
 `;
-  const hintHtml = `<span class="hint-text">可复制文本发送给老婆大人</span>`;
+  const hintHtml = `<span class="hint-text">复制文本发送给老婆大人</span>`;
   // 复制用纯文本（不带标签）
-  currentFullText = rawText + '可复制文本发送给老婆大人';
+  currentFullText = rawText + '复制文本发送给老婆大人';
   // 弹窗渲染带样式HTML
   previewText.innerHTML = rawText + hintHtml;
   previewModal.style.display = 'flex';
