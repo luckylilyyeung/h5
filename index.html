@@ -1,65 +1,145 @@
-<!-- FORCE_HTML_MIME 强制网页解析标记，解决微信源码裸奔bug -->
+<!-- FORCE_HTML_MIME 强制网页解析，杜绝微信源码bug -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>生日礼物选择</title>
+<title>Happy birthday to Luffy · 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
-body{background:#f7f8fa;padding:20px 16px;}
-.page-title{text-align:center;font-size:24px;color:#222;margin-bottom:24px;font-weight:600;}
-.gift-card{background:#fff;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-.gift-name{font-size:17px;font-weight:600;color:#111;margin-bottom:8px;}
-.gift-source{font-size:13px;color:#888;margin-bottom:14px;word-break:break-all;}
-.btn-group{display:flex;gap:10px;}
-button{flex:1;padding:11px 0;border-radius:10px;border:none;font-size:15px;cursor:pointer;}
-.btn-open{background:#e64340;color:#fff;}
-.btn-copy{background:#f0f2f5;color:#333;}
-.divider{height:1px;background:#eee;margin:28px 0;}
-.custom-box{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-.custom-title{font-size:17px;font-weight:600;margin-bottom:12px;}
-#customUrl{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:14px;margin-bottom:14px;outline:0;}
-.tip-text{font-size:12px;color:#999;margin-top:8px;line-height:1.5;}
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;display:none;z-index:999;}
+body{background:#1c1c28;padding:24px 18px;}
+.wrap{max-width:420px;margin:0 auto;}
+.head-title{text-align:center;margin-bottom:32px;}
+.head-title h1{font-size:22px;color:#fff;font-weight:500;letter-spacing:2px;margin-bottom:8px;}
+.head-title p{color:#a9a9c1;font-size:14px;line-height:1.6;}
+.pick-tip{color:#c2c2e0;text-align:center;margin-bottom:20px;font-size:15px;}
+.gift-card{background:#2a2a3d;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,0.2);display:flex;align-items:flex-start;gap:14px;}
+.checkbox{width:22px;height:22px;margin-top:2px;accent-color:#e66b6b;cursor:pointer;}
+.gift-info{flex:1;}
+.gift-name{font-size:17px;font-weight:600;color:#fff;margin-bottom:6px;}
+.gift-source{font-size:12px;color:#888;margin-bottom:14px;word-break:break-all;}
+/* 次要复制按钮：同渐变色系，弱化透明度，保留统一画风，降低权重 */
+.btn-single{
+    width:100%;
+    padding:10px 0;
+    border-radius:999px;
+    border:none;
+    font-size:13px;
+    cursor:pointer;
+    background: linear-gradient(135deg,rgba(255,121,168,0.45),rgba(180,123,255,0.45),rgba(123,166,255,0.45));
+    color:#e2e2f0;
+    transition:0.2s ease;
+}
+.btn-single:active{
+    transform:scale(0.97);
+}
+.custom-box{background:#2a2a3d;border-radius:20px;padding:20px;}
+.custom-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;}
+#customUrl{width:100%;padding:12px 14px;border:1px solid #444;border-radius:10px;font-size:14px;margin-bottom:14px;outline:0;background:#1f1f2f;color:#fff;}
+/*主许愿按钮，高饱和梦幻渐变，视觉重心*/
+#sendBtn{
+    width:100%;
+    margin-top:28px;
+    padding:15px;
+    border-radius:999px;
+    border:none;
+    font-size:15px;
+    letter-spacing:1px;
+    cursor:pointer;
+    background: linear-gradient(135deg,#ff79a8,#b47bff,#7ba6ff);
+    color:#fff;
+    font-weight:500;
+    box-shadow: 0 4px 18px rgba(255,120,170,0.35);
+    transition:0.3s ease;
+}
+#sendBtn:active{
+    transform:scale(0.97);
+    box-shadow: 0 2px 8px rgba(255,120,170,0.25);
+}
+.tip-text{display:none;}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);color:#fff;padding:16px 26px;border-radius:10px;font-size:14px;display:none;z-index:999;min-width:260px;text-align:center;line-height:1.7;}
+.footer-note{margin-top:36px;text-align:center;color:#999;font-size:13px;line-height:1.7;}
 </style>
 <body>
-<h1 class="page-title">🎁 生日礼物挑选</h1>
+<div class="wrap">
+<div class="head-title">
+<h1>Happy birthday to Luffy · 2026</h1>
+<p>我最亲爱的老公宝宝，生日快乐！愿你岁岁舒心自在，永远保有自己的热爱´ₒ⦁⩊⦁ₒ`</p>
+</div>
+
+<p class="pick-tip">快来挑选心动的礼物吧</p>
+
 <div class="gift-card">
-<div class="gift-name">日版deck OLED掌机512G现货</div>
-<div class="gift-source">京东链接：https://3.jd.hk/101v2-Na</div>
-<div class="btn-group">
-<button class="btn-open" data-link="https://3.jd.hk/101v2-Na">直接打开链接</button>
-<button class="btn-copy" data-link="https://3.jd.hk/101v2-Na">复制链接</button>
+<input type="checkbox" class="checkbox" data-fulltext="【京东】https://3.cn/2-UEIzJi?jkl=@W6UwZBsWma1L@ MF8335 「Steam Deck OLED 日版 512G」" data-name="Steam Deck OLED 日版 512G">
+<div class="gift-info">
+<div class="gift-name">① Steam Deck OLED 日版 512G</div>
+<div class="gift-source">【京东】https://3.cn/2-UEIzJi?jkl=@W6UwZBsWma1L@ MF8335 「Steam Deck OLED 日版 512G」</div>
+<button class="btn-single">复制链接去京东打开</button>
 </div>
 </div>
+
 <div class="gift-card">
-<div class="gift-name">三星27英寸FastIPS双模显示器</div>
-<div class="gift-source">京东链接：https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331</div>
-<div class="btn-group">
-<button class="btn-open" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331">直接打开链接</button>
-<button class="btn-copy" data-link="https://3.cn/2Ur-fX8k?jkl=@BF1CD1bsf7BO@ CA1331">复制链接</button>
+<input type="checkbox" class="checkbox" data-fulltext="【京东】https://3.cn/2U-EIMKL?jkl=@Y6KyK4mWui2i@ MF3390 「LG 27\"  4K240Hz双模 DP2.1 G8」" data-name="LG 27"  4K240Hz双模 DP2.1 G8">
+<div class="gift-info">
+<div class="gift-name">② LG 27"  4K240Hz双模 DP2.1 G8</div>
+<div class="gift-source">【京东】https://3.cn/2U-EIMKL?jkl=@Y6KyK4mWui2i@ MF3390 「LG 27"  4K240Hz双模 DP2.1 G8」</div>
+<button class="btn-single">复制链接去京东打开</button>
 </div>
 </div>
-<div class="divider"></div>
+
 <div class="custom-box">
-<div class="custom-title">自定义其他礼物链接</div>
-<input id="customUrl" placeholder="粘贴你的礼物商品链接">
-<div class="btn-group">
-<button class="btn-open" id="customOpen">打开自定义链接</button>
-<button class="btn-copy" id="customCopy">复制自定义链接</button>
+<div class="custom-title">③ 宝宝更想要：</div>
+<input id="customUrl" placeholder="粘贴链接，写下你的心愿好物发给我">
 </div>
-<p class="tip-text">提示：微信内京东链接会拦截，复制后用浏览器打开</p>
+
+<button id="sendBtn">✧ 确认提交生日礼物许愿单 ✧</button>
+
+<div class="footer-note">
+不用谢，老婆大人永远爱你( ˘ ³˘)
 </div>
-<div class="toast" id="toast">链接已复制</div>
+
+<div class="toast" id="toast"></div>
+</div>
+
 <script>
 function copyText(text){return new Promise((resolve,reject)=>{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(resolve).catch(reject);}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();t.setSelectionRange(0,text.length);const ok=document.execCommand('copy');document.body.removeChild(t);ok?resolve():reject();}})}
-function showToast(msg){const t=document.getElementById('toast');t.innerText=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1500);}
-function openLink(u){window.location.href=u;}
-document.querySelectorAll('.btn-open').forEach(b=>{b.onclick=()=>{let l=b.dataset.link;if(l)openLink(l);}});
-document.querySelectorAll('.btn-copy').forEach(b=>{b.onclick=async()=>{let l=b.dataset.link;if(!l)return;try{await copyText(l);showToast('复制成功，切换浏览器打开');}catch(e){showToast('复制失败，请长按链接手动复制');}}});
-const ipt=document.getElementById('customUrl');
-document.getElementById('customOpen').onclick=()=>{let v=ipt.value.trim();if(!v)return showToast('请输入商品链接');openLink(v);};
-document.getElementById('customCopy').onclick=async()=>{let v=ipt.value.trim();if(!v)return showToast('请输入商品链接');await copyText(v);showToast('自定义链接复制完成');};
+function showToast(html){
+  const t=document.getElementById('toast');
+  t.innerHTML=html;
+  t.style.display='block';
+  setTimeout(()=>t.style.display='none',2200);
+}
+
+// 单品复制完整京东文案
+document.querySelectorAll('.btn-single').forEach((btn,idx)=>{
+  btn.onclick = async ()=>{
+    const fullTxt = document.querySelectorAll('.checkbox')[idx].dataset.fulltext;
+    await copyText(fullTxt);
+    showToast('完整文案已复制，粘贴到京东即可打开❤️');
+  }
+});
+
+// 提交许愿单：自动唤起邮箱发送到luckylilyyeung@gmail.com
+document.getElementById('sendBtn').onclick=async()=>{
+  const checks = document.querySelectorAll('.checkbox:checked');
+  const custom = document.getElementById('customUrl').value.trim();
+  let list = '';
+  if(checks.length===0 && !custom){
+    showToast('宝宝还没有挑选礼物哦，勾选好物或者写下你的心愿吧');
+    return;
+  }
+  list += '🎁 Luffy 2026生日礼物许愿单：\n\n';
+  checks.forEach(cb=>{
+    list += cb.dataset.fulltext + '\n\n';
+  });
+  if(custom) list += '宝宝额外心愿：\n' + custom;
+
+  const mailTo = 'luckylilyyeung@gmail.com';
+  const subject = encodeURIComponent('Luffy 2026生日礼物许愿单');
+  const body = encodeURIComponent(list);
+  window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+
+  showToast('许愿单已寄出，心愿飞向我啦✨');
+};
 </script>
 </body>
 </html>
