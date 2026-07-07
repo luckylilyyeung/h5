@@ -38,8 +38,15 @@ body{background:#fff8fc;padding:24px 18px;}
 }
 .custom-box{background:#fff;border-radius:20px;padding:20px;}
 .custom-title{font-size:16px;font-weight:600;color:#332230;margin-bottom:10px;}
-.input-group{margin-bottom:12px;}
+/* 输入框行弹性布局，容纳输入框+删除按钮 */
+.input-group{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
 #customUrl,.extra-input{
+    flex:1;
     width:100%;
     padding:12px 14px;
     border:1px solid #e2d4e0;
@@ -49,6 +56,21 @@ body{background:#fff8fc;padding:24px 18px;}
     outline:0;
     background:#fcf6fa;
     color:#332230;
+}
+/* 新增关闭删除按钮 */
+.remove-input{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    flex-shrink:0;
+    font-size:16px;
+    color:#fff;
+    cursor:pointer;
+    background: linear-gradient(135deg,#ff79a8,#b47bff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 .add-more{
     width:100%;
@@ -115,6 +137,7 @@ body{background:#fff8fc;padding:24px 18px;}
 <div class="custom-box">
 <div class="custom-title">③ Luffy更想要：</div>
 <div id="inputContainer">
+    <!-- 初始第一条无删除按钮 -->
     <div class="input-group">
         <input id="customUrl" placeholder="粘贴链接，写下你的心愿好物发给我">
     </div>
@@ -149,16 +172,27 @@ document.querySelectorAll('.btn-single').forEach((btn,idx)=>{
   }
 });
 
-// 动态新增输入框
+// 动态新增输入框+删除按钮
 const inputContainer = document.getElementById('inputContainer');
 const addBtn = document.getElementById('addBtn');
 addBtn.onclick = ()=>{
     const group = document.createElement('div');
     group.className = 'input-group';
+
     const newInput = document.createElement('input');
     newInput.className = 'extra-input';
     newInput.placeholder = '继续写下新的心愿';
+
+    // 关闭删除按钮
+    const delBtn = document.createElement('button');
+    delBtn.className = 'remove-input';
+    delBtn.textContent = '×';
+    delBtn.onclick = function(){
+        group.remove();
+    };
+
     group.appendChild(newInput);
+    group.appendChild(delBtn);
     inputContainer.appendChild(group);
 };
 
