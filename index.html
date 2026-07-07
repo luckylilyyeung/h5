@@ -276,36 +276,29 @@ copyAllBtn.onclick = async ()=>{
 document.getElementById('sendBtn').onclick=async()=>{
   const checks = document.querySelectorAll('.checkbox:checked');
   const allInputs = document.querySelectorAll('#inputContainer input');
-  let giftList = [];
-  let wishList = [];
+  let allItems = [];
 
-  // 收集勾选礼物
-  checks.forEach(cb=> giftList.push(cb.dataset.fulltext));
-  // 收集所有自定义心愿
+  // 收集勾选商品链接
+  checks.forEach(cb=> allItems.push(cb.dataset.fulltext));
+  // 收集所有用户填写内容，过滤空输入
   allInputs.forEach(input=>{
       const val = input.value.trim();
-      if(val) wishList.push(val);
+      if(val) allItems.push(val);
   });
 
   // 空值校验
-  if(giftList.length===0 && wishList.length===0){
+  if(allItems.length === 0){
     showToast('宝宝还没有挑选礼物哦，勾选好物或者写下你的心愿吧');
     return;
   }
 
-  // 纯清单文本（用于复制，不含底部提示句）
-  const time = new Date().toLocaleString();
-  currentFullText = `🎁 Luffy 2026生日礼物许愿单
-提交时间：${time}
+  // 复制到微信的完整文本：开头固定问候，所有内容平铺不分分类
+  currentFullText = `老婆大人，我的礼物选好啦～
 
-【选中礼物】
-${giftList.join('\n\n')}
+${allItems.join('\n\n')}`;
 
-【Luffy额外心愿】
-${wishList.map(item => '· ' + item).join('\n')}`;
-
-  // 弹窗展示HTML（清单+粉色提示，仅展示不复制）
-  const displayHtml = currentFullText + `<br><span class="hint-text">复制文本发送给老婆大人</span>`;
+  // 弹窗展示内容（复制文本 + 粉色提示）
+  const displayHtml = currentFullText + `<br><span class="hint-text">复制文本粘贴到微信，发送给老婆大人</span>`;
   previewText.innerHTML = displayHtml;
   previewModal.style.display = 'flex';
 };
