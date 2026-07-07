@@ -34,7 +34,29 @@ body{background:#1c1c28;padding:24px 18px;}
 }
 .custom-box{background:#2a2a3d;border-radius:20px;padding:20px;}
 .custom-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;}
-#customUrl{width:100%;padding:12px 14px;border:1px solid #444;border-radius:10px;font-size:14px;margin-bottom:14px;outline:0;background:#1f1f2f;color:#fff;}
+.input-group{margin-bottom:12px;}
+#customUrl,.extra-input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #444;
+    border-radius:10px;
+    font-size:14px;
+    margin-bottom:0;
+    outline:0;
+    background:#1f1f2f;
+    color:#fff;
+}
+.add-more{
+    width:100%;
+    padding:9px;
+    border-radius:999px;
+    border:1px dashed rgba(255,121,168,0.6);
+    background:transparent;
+    color:#ffc8dd;
+    font-size:13px;
+    cursor:pointer;
+    margin-top:8px;
+}
 /*主许愿按钮，高饱和梦幻渐变，视觉重心*/
 #sendBtn{
     width:100%;
@@ -71,7 +93,7 @@ body{background:#1c1c28;padding:24px 18px;}
 <div class="gift-card">
 <input type="checkbox" class="checkbox" data-fulltext="【京东】https://3.cn/2-UEIzJi?jkl=@W6UwZBsWma1L@ MF8335 「Steam Deck OLED 日版 512G」" data-name="Steam Deck OLED 日版 512G">
 <div class="gift-info">
-<div class="gift-name">① Steam Deck</div>
+<div class="gift-name">① Steam Deck OLED 日版</div>
 <div class="gift-source">【京东】https://3.cn/2-UEIzJi?jkl=@W6UwZBsWma1L@ MF8335 「Steam Deck OLED 日版 512G」</div>
 <button class="btn-single">看一看</button>
 </div>
@@ -80,7 +102,7 @@ body{background:#1c1c28;padding:24px 18px;}
 <div class="gift-card">
 <input type="checkbox" class="checkbox" data-fulltext="【京东】https://3.cn/2U-EIMKL?jkl=@Y6KyK4mWui2i@ MF3390 「LG 27\"  4K240Hz双模 DP2.1 G8」" data-name="LG 27"  4K240Hz双模 DP2.1 G8">
 <div class="gift-info">
-<div class="gift-name">② 电脑显示器</div>
+<div class="gift-name">② LG 27寸 显示器</div>
 <div class="gift-source">【京东】https://3.cn/2U-EIMKL?jkl=@Y6KyK4mWui2i@ MF3390 「LG 27"  4K240Hz双模 DP2.1 G8」</div>
 <button class="btn-single">看一看</button>
 </div>
@@ -88,7 +110,12 @@ body{background:#1c1c28;padding:24px 18px;}
 
 <div class="custom-box">
 <div class="custom-title">③ 宝宝更想要：</div>
-<input id="customUrl" placeholder="粘贴链接，写下你的心愿好物发给我">
+<div id="inputContainer">
+    <div class="input-group">
+        <input id="customUrl" placeholder="粘贴链接，写下你的心愿好物发给我">
+    </div>
+</div>
+<button class="add-more" id="addBtn">＋ 添加更多心愿</button>
 </div>
 
 <button id="sendBtn">✧ 确认提交生日礼物许愿单 ✧</button>
@@ -118,12 +145,25 @@ document.querySelectorAll('.btn-single').forEach((btn,idx)=>{
   }
 });
 
+// 动态新增输入框
+const inputContainer = document.getElementById('inputContainer');
+const addBtn = document.getElementById('addBtn');
+addBtn.onclick = ()=>{
+    const group = document.createElement('div');
+    group.className = 'input-group';
+    const newInput = document.createElement('input');
+    newInput.className = 'extra-input';
+    newInput.placeholder = '继续写下新的心愿';
+    group.appendChild(newInput);
+    inputContainer.appendChild(group);
+};
+
 // 提交许愿单：自动唤起邮箱发送到luckylilyyeung@gmail.com
 document.getElementById('sendBtn').onclick=async()=>{
   const checks = document.querySelectorAll('.checkbox:checked');
-  const custom = document.getElementById('customUrl').value.trim();
+  const allInputs = document.querySelectorAll('#inputContainer input');
   let list = '';
-  if(checks.length===0 && !custom){
+  if(checks.length===0 && [...allInputs].every(el=>el.value.trim()==='')){
     showToast('宝宝还没有挑选礼物哦，勾选好物或者写下你的心愿吧');
     return;
   }
@@ -131,7 +171,16 @@ document.getElementById('sendBtn').onclick=async()=>{
   checks.forEach(cb=>{
     list += cb.dataset.fulltext + '\n\n';
   });
-  if(custom) list += '宝宝额外心愿：\n' + custom;
+  // 收集所有自定义心愿
+  const wishList = [];
+  allInputs.forEach(input=>{
+      const val = input.value.trim();
+      if(val) wishList.push(val);
+  });
+  if(wishList.length > 0){
+      list += '宝宝额外心愿：\n';
+      wishList.forEach(item=> list += '· ' + item + '\n');
+  }
 
   const mailTo = 'luckylilyyeung@gmail.com';
   const subject = encodeURIComponent('Luffy 2026生日礼物许愿单');
