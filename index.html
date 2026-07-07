@@ -269,7 +269,7 @@ closeModalBtn.onclick = ()=>{
 // 弹窗一键复制全部许愿单
 copyAllBtn.onclick = async ()=>{
     await copyText(currentFullText);
-    showToast('许愿单完整文字已复制！可以发给我✨');
+    showToast('许愿单完整清单已复制！直接发送给我✨');
 }
 
 // 生成许愿单主逻辑
@@ -293,23 +293,20 @@ document.getElementById('sendBtn').onclick=async()=>{
     return;
   }
 
-  // 拼接格式化许愿文本
+  // 纯清单文本（用于复制，不含底部提示句）
   const time = new Date().toLocaleString();
-  const rawText = `🎁 Luffy 2026生日礼物许愿单
+  currentFullText = `🎁 Luffy 2026生日礼物许愿单
 提交时间：${time}
 
 【选中礼物】
 ${giftList.join('\n\n')}
 
 【Luffy额外心愿】
-${wishList.map(item => '· ' + item).join('\n')}
+${wishList.map(item => '· ' + item).join('\n')}`;
 
-`;
-  const hintHtml = `<span class="hint-text">复制文本，微信发送给老婆大人</span>`;
-  // 复制用纯文本（不含HTML标签、不含顶部情话）
-  currentFullText = rawText + '复制文本，微信发送给老婆大人';
-  // 弹窗渲染完整内容（顶部情话+清单+高亮提示）
-  previewText.innerHTML = rawText + hintHtml;
+  // 弹窗展示HTML（清单+粉色提示，仅展示不复制）
+  const displayHtml = currentFullText + `<br><span class="hint-text">复制文本发送给老婆大人</span>`;
+  previewText.innerHTML = displayHtml;
   previewModal.style.display = 'flex';
 };
 </script>
