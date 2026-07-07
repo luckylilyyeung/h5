@@ -6,22 +6,16 @@
 <title>Happy Birthday to Luffy · 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
-/* 页面改为浅奶白色背景 */
 body{background:#fff8fc;padding:24px 18px;}
 .wrap{max-width:420px;margin:0 auto;}
 .head-title{text-align:center;margin-bottom:12px;}
-/* 浅色模式淡灰文字 */
 .head-title p{color:#554450;font-size:14px;line-height:1.6;margin-bottom:0;margin-top:16px;}
 .pick-tip{color:#775e76;text-align:center;margin-bottom:20px;font-size:15px;margin-top:6px;}
-/* 卡片浅粉底色 */
 .gift-card{background:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px rgba(220,160,200,0.15);display:flex;align-items:flex-start;gap:14px;}
 .checkbox{width:22px;height:22px;margin-top:2px;accent-color:#ff87b2;cursor:pointer;}
 .gift-info{flex:1;}
-/* 深色文字适配白底 */
 .gift-name{font-size:17px;font-weight:600;color:#332230;margin-bottom:6px;}
-/* 隐藏链接文字，不再展示给用户 */
 .gift-source{display:none;}
-/* 次要复制按钮：同渐变色系，弱化透明度，保留统一画风，降低权重 */
 .btn-single{
     width:100%;
     padding:10px 0;
@@ -33,18 +27,10 @@ body{background:#fff8fc;padding:24px 18px;}
     color:#fff;
     transition:0.2s ease;
 }
-.btn-single:active{
-    transform:scale(0.97);
-}
+.btn-single:active{transform:scale(0.97);}
 .custom-box{background:#fff;border-radius:20px;padding:20px;}
 .custom-title{font-size:16px;font-weight:600;color:#332230;margin-bottom:10px;}
-/* 输入框行弹性布局，容纳输入框+删除按钮 */
-.input-group{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:12px;
-}
+.input-group{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
 #customUrl,.extra-input{
     flex:1;
     width:100%;
@@ -57,45 +43,22 @@ body{background:#fff8fc;padding:24px 18px;}
     background:#fcf6fa;
     color:#332230;
 }
-/* 新增关闭删除按钮 */
 .remove-input{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    border:none;
-    flex-shrink:0;
-    font-size:16px;
-    color:#fff;
-    cursor:pointer;
+    width:32px;height:32px;border-radius:50%;border:none;flex-shrink:0;
+    font-size:16px;color:#fff;cursor:pointer;
     background: linear-gradient(135deg,#ff79a8,#b47bff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex;align-items:center;justify-content:center;
 }
 .add-more{
-    width:100%;
-    padding:9px;
-    border-radius:999px;
-    border:1px dashed #ff87b2;
-    background:transparent;
-    color:#dd5588;
-    font-size:13px;
-    cursor:pointer;
-    margin-top:8px;
+    width:100%;padding:9px;border-radius:999px;
+    border:1px dashed #ff87b2;background:transparent;color:#dd5588;
+    font-size:13px;cursor:pointer;margin-top:8px;
 }
-/*主许愿按钮，高饱和梦幻渐变，视觉重心*/
 #sendBtn{
-    width:100%;
-    margin-top:28px;
-    padding:15px;
-    border-radius:999px;
-    border:none;
-    font-size:15px;
-    letter-spacing:1px;
-    cursor:pointer;
+    width:100%;margin-top:28px;padding:15px;border-radius:999px;border:none;
+    font-size:15px;letter-spacing:1px;cursor:pointer;
     background: linear-gradient(135deg,#ff79a8,#b47bff,#7ba6ff);
-    color:#fff;
-    font-weight:500;
+    color:#fff;font-weight:500;
     box-shadow: 0 4px 18px rgba(255,120,170,0.35);
     transition:0.3s ease;
 }
@@ -104,8 +67,63 @@ body{background:#fff8fc;padding:24px 18px;}
     box-shadow: 0 2px 8px rgba(255,120,170,0.25);
 }
 .tip-text{display:none;}
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:16px 26px;border-radius:10px;font-size:14px;display:none;z-index:999;min-width:260px;text-align:center;line-height:1.7;}
+.toast{
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:rgba(0,0,0,0.8);color:#fff;padding:16px 26px;
+    border-radius:10px;font-size:14px;display:none;z-index:999;
+    min-width:260px;text-align:center;line-height:1.7;
+}
 .footer-note{margin-top:36px;text-align:center;color:#776070;font-size:13px;line-height:1.7;}
+/* 弹窗展示生成的许愿文本 */
+.preview-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.preview-box{
+    background:#fff8fc;
+    width:100%;
+    max-width:360px;
+    border-radius:20px;
+    padding:20px;
+}
+.preview-content{
+    white-space:pre-wrap;
+    color:#332230;
+    font-size:14px;
+    line-height:1.6;
+    max-height:60vh;
+    overflow-y:auto;
+    margin-bottom:16px;
+    padding:12px;
+    background:#fcf6fa;
+    border-radius:12px;
+}
+.modal-btn-group{
+    display:flex;
+    gap:10px;
+}
+.modal-btn{
+    flex:1;
+    padding:12px;
+    border-radius:999px;
+    border:none;
+    font-size:14px;
+    cursor:pointer;
+}
+.copy-modal-btn{
+    background: linear-gradient(135deg,#ff79a8,#b47bff);
+    color:#fff;
+}
+.close-modal-btn{
+    background:#eee;
+    color:#333;
+}
 </style>
 <body>
 <div class="wrap">
@@ -137,7 +155,6 @@ body{background:#fff8fc;padding:24px 18px;}
 <div class="custom-box">
 <div class="custom-title">③ Luffy更想要：</div>
 <div id="inputContainer">
-    <!-- 初始第一条无删除按钮 -->
     <div class="input-group">
         <input id="customUrl" placeholder="粘贴链接，写下你的心愿好物发给我">
     </div>
@@ -145,25 +162,54 @@ body{background:#fff8fc;padding:24px 18px;}
 <button class="add-more" id="addBtn">＋ 添加更多心愿</button>
 </div>
 
-<button id="sendBtn">✧ 提交许愿单 ✧</button>
+<!-- 修改按钮文字为生成许愿单 -->
+<button id="sendBtn">✧ 生成许愿单 ✧</button>
 
 <div class="footer-note">
 不用谢，老婆大人永远爱你( ˘ ³˘)
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- 许愿单预览弹窗 -->
+<div class="preview-modal" id="previewModal">
+    <div class="preview-box">
+        <div class="preview-content" id="previewText"></div>
+        <div class="modal-btn-group">
+            <button class="modal-btn copy-modal-btn" id="copyAllBtn">一键复制全部文字</button>
+            <button class="modal-btn close-modal-btn" id="closeModalBtn">关闭</button>
+        </div>
+    </div>
+</div>
 </div>
 
 <script>
-function copyText(text){return new Promise((resolve,reject)=>{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(resolve).catch(reject);}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();t.setSelectionRange(0,text.length);const ok=document.execCommand('copy');document.body.removeChild(t);ok?resolve():reject();}})}
+function copyText(text){
+    return new Promise((resolve,reject)=>{
+        if(navigator.clipboard&&window.isSecureContext){
+            navigator.clipboard.writeText(text).then(resolve).catch(reject);
+        }else{
+            const t=document.createElement('textarea');
+            t.value=text;
+            t.style.position='fixed';
+            t.style.left='-9999px';
+            document.body.appendChild(t);
+            t.select();
+            t.setSelectionRange(0,text.length);
+            const ok=document.execCommand('copy');
+            document.body.removeChild(t);
+            ok?resolve():reject();
+        }
+    })
+}
 function showToast(html){
   const t=document.getElementById('toast');
   t.innerHTML=html;
   t.style.display='block';
-  setTimeout(()=>t.style.display='none',2200);
+  setTimeout(()=>t.style.display='none',2500);
 }
 
-// 单品复制完整京东文案
+// 单品复制链接
 document.querySelectorAll('.btn-single').forEach((btn,idx)=>{
   btn.onclick = async ()=>{
     const fullTxt = document.querySelectorAll('.checkbox')[idx].dataset.fulltext;
@@ -172,60 +218,79 @@ document.querySelectorAll('.btn-single').forEach((btn,idx)=>{
   }
 });
 
-// 动态新增输入框+删除按钮
+// 动态新增心愿输入框+删除按钮
 const inputContainer = document.getElementById('inputContainer');
 const addBtn = document.getElementById('addBtn');
 addBtn.onclick = ()=>{
     const group = document.createElement('div');
     group.className = 'input-group';
-
     const newInput = document.createElement('input');
     newInput.className = 'extra-input';
     newInput.placeholder = '继续写下新的心愿';
-
-    // 关闭删除按钮
     const delBtn = document.createElement('button');
     delBtn.className = 'remove-input';
     delBtn.textContent = '×';
-    delBtn.onclick = function(){
-        group.remove();
-    };
-
+    delBtn.onclick = ()=> group.remove();
     group.appendChild(newInput);
     group.appendChild(delBtn);
     inputContainer.appendChild(group);
 };
 
-// 提交许愿单：自动唤起邮箱发送到luckylilyyeung@gmail.com
+// 弹窗元素
+const previewModal = document.getElementById('previewModal');
+const previewText = document.getElementById('previewText');
+const copyAllBtn = document.getElementById('copyAllBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+let currentFullText = '';
+
+// 关闭弹窗
+closeModalBtn.onclick = ()=>{
+    previewModal.style.display = 'none';
+}
+
+// 弹窗一键复制全部许愿单
+copyAllBtn.onclick = async ()=>{
+    await copyText(currentFullText);
+    showToast('许愿单完整文字已复制！可以截图保存成图片发给我✨');
+}
+
+// 生成许愿单主逻辑
 document.getElementById('sendBtn').onclick=async()=>{
   const checks = document.querySelectorAll('.checkbox:checked');
   const allInputs = document.querySelectorAll('#inputContainer input');
-  let list = '';
-  if(checks.length===0 && [...allInputs].every(el=>el.value.trim()==='')){
-    showToast('宝宝还没有挑选礼物哦，勾选好物或者写下你的心愿吧');
-    return;
-  }
-  list += '🎁 Luffy 2026生日礼物许愿单：\n\n';
-  checks.forEach(cb=>{
-    list += cb.dataset.fulltext + '\n\n';
-  });
+  let giftList = [];
+  let wishList = [];
+
+  // 收集勾选礼物
+  checks.forEach(cb=> giftList.push(cb.dataset.fulltext));
   // 收集所有自定义心愿
-  const wishList = [];
   allInputs.forEach(input=>{
       const val = input.value.trim();
       if(val) wishList.push(val);
   });
-  if(wishList.length > 0){
-      list += '宝宝额外心愿：\n';
-      wishList.forEach(item=> list += '· ' + item + '\n');
+
+  // 空值校验
+  if(giftList.length===0 && wishList.length===0){
+    showToast('宝宝还没有挑选礼物哦，勾选好物或者写下你的心愿吧');
+    return;
   }
 
-  const mailTo = 'luckylilyyeung@gmail.com';
-  const subject = encodeURIComponent('Luffy 2026生日礼物许愿单');
-  const body = encodeURIComponent(list);
-  window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+  // 拼接格式化许愿文本
+  const time = new Date().toLocaleString();
+  currentFullText = `🎁 Luffy 2026生日礼物许愿单
+提交时间：${time}
 
-  showToast('许愿单已寄出，心愿飞向老婆大人啦✨');
+【选中礼物】
+${giftList.join('\n\n')}
+
+【Luffy额外心愿】
+${wishList.map(item => '· ' + item).join('\n')}
+
+可复制文本，截图保存图片发送给老婆大人`;
+
+  // 弹窗展示生成内容
+  previewText.innerText = currentFullText;
+  previewModal.style.display = 'flex';
 };
 </script>
 </body>
